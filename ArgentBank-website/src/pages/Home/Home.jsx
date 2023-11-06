@@ -1,4 +1,6 @@
 import Banner from "../../components/Banner/Banner";
+import Feature from "../../components/Feature/Feature";
+import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 
 export const Home = () => {
@@ -6,6 +8,9 @@ export const Home = () => {
     <div>
       <Header />
       <Banner />
+      <Feature />
+      <div className="separator"></div>
+      <Footer />
     </div>
   );
 };
