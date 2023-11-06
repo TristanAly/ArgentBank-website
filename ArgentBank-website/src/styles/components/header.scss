@@ -13,9 +13,12 @@ header {
     }
     .link {
       text-decoration: none;
-      color: black;
+      color: #2c3e50;
       :hover {
         text-decoration: underline;
+      }
+      :active {
+        color: #42b983;
       }
       .button-log {
         font-weight: bold;
