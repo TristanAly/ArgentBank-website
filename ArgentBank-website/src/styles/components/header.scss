@@ -1,0 +1,30 @@
+header {
+  padding: 5px 20px;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      margin: 0;
+      img {
+        max-width: 100%;
+        width: 200px;
+      }
+    }
+    .link {
+      text-decoration: none;
+      color: black;
+      :hover {
+        text-decoration: underline;
+      }
+      .button-log {
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        .iconUserCircle {
+          padding-right: 4px;
+        }
+      }
+    }
+  }
+}
