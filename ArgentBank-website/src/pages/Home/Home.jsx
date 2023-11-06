@@ -9,7 +9,6 @@ export const Home = () => {
       <Header />
       <Banner />
       <Feature />
-      <div className="separator"></div>
       <Footer />
     </div>
   );
