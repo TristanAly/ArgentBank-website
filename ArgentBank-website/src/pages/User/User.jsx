@@ -1,19 +1,20 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MoneyBankCard from "../../components/MoneyBankCard/MoneyBankCard";
+import { getUser } from "../../actions/userProfile.action";
 
 const User = () => {
-  const usertest = useSelector((state) => state.test);
+  const user = useSelector((state) => state.getuser);
 
-  return usertest ? (
+  return user ? (
     <div>
       <Header />
       <div className="main-bank bg-dark">
         <div className="header">
           <h2>
-            Welcome back <br /> {usertest.firstName} {usertest.lastName}!
+            Welcome back <br /> {user.firstName} {user.lastName}!
           </h2>
           <button className="edit-button">Edit Name</button>
         </div>

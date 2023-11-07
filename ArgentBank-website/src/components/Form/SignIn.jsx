@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../reducers/user.reducer";
+import { loginUser } from "../../actions/postUser.action";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
