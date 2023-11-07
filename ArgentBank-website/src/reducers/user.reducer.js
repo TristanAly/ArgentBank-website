@@ -1,13 +1,49 @@
-const initialState = {};
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export default function userReducer(state = initialState, action) {
-  return state;
-  // switch
-  // switch (action.type) {
-  //   case value:
+export const loginUser = createAsyncThunk(
+  "user/login",
+  async (userCredentials) => {
+    const request = await axios.post(
+      "http://localhost:3001/api/v1/user/login",
+      userCredentials
+    );
+    const response = await request.data;
+    localStorage.setItem("token", JSON.stringify(response.body.token));
+    return response;
+  }
+);
 
-  //     break;
+const userReducer = createSlice({
+  name: "user",
+  initialState: {
+    loading: false,
+    user: null,
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.user = null;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        console.log(action.error.message);
+        if (action.error.message === "Request failed with status code 401") {
+          state.error = "Acess Denied Invalid Credentials";
+        } else {
+          state.error = action.error.message;
+        }
+      });
+  },
+});
 
-  //   default:
-  //     break;
-}
+export default userReducer.reducer;
