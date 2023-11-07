@@ -7,7 +7,7 @@ import MoneyBankCard from "../../components/MoneyBankCard/MoneyBankCard";
 const User = () => {
   const usertest = useSelector((state) => state.test);
 
-  return (
+  return usertest ? (
     <div>
       <Header />
       <div className="main-bank bg-dark">
@@ -34,6 +34,11 @@ const User = () => {
         />
       </div>
       <Footer />
+    </div>
+  ) : (
+    <div>
+      <Header />
+      <h2> Page indisponible </h2>
     </div>
   );
 };
