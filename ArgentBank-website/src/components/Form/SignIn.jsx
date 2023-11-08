@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../actions/postUser.action";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignIn = () => {
   //states
@@ -53,6 +53,11 @@ const SignIn = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div>
+            <Link to="/register" className="link">
+              Je n'ai pas de compte, m'inscrire
+            </Link>
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />

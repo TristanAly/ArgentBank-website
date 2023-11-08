@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "../actions/postUser.action";
+import { loginUser, registerUser } from "../actions/postUser.action";
 
 const userReducer = createSlice({
   name: "user",
@@ -10,7 +10,7 @@ const userReducer = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
+      .addCase(loginUser.pending, registerUser.pending, (state) => {
         state.loading = true;
         state.user = null;
         state.error = null;
@@ -20,7 +20,12 @@ const userReducer = createSlice({
         state.user = action.payload;
         state.error = null;
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(loginUser.rejected, registerUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
         console.log(action.error.message);

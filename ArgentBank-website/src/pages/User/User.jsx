@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,14 @@ import { getUser } from "../../actions/userProfile.action";
 const User = () => {
   const user = useSelector((state) => state.getuser);
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Récupérez le token depuis le localStorage
+    if (token) {
+      // Si le token est disponible, appelez l'action getUser pour obtenir les informations de l'utilisateur
+      dispatch(getUser(token));
+    }
+  }, [dispatch]);
   return user ? (
     <div>
       <Header />
@@ -38,8 +46,7 @@ const User = () => {
     </div>
   ) : (
     <div>
-      <Header />
-      <h2> Page indisponible </h2>
+      <h1>page fonctionne pas</h1>
     </div>
   );
 };

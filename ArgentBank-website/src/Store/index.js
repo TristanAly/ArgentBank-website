@@ -10,7 +10,7 @@ const store = configureStore({
   },
   // devTools: true,
 });
-const access_token = localStorage.getItem("token");
-store.dispatch(getUser(access_token));
+// const access_token = localStorage.getItem("token");
+// store.dispatch(getUser(access_token));
 
 export default store;
