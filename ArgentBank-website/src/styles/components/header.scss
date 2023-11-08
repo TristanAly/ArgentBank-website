@@ -29,5 +29,18 @@ header {
         }
       }
     }
+    .SignOut {
+      display: flex;
+      align-items: center;
+      .userPreference {
+        display: flex;
+        align-items: center;
+        margin-right: 8px;
+        .iconUserCircle {
+          padding-right: 4px;
+          padding-bottom: 2px;
+        }
+      }
+    }
   }
 }

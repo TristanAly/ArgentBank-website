@@ -18,7 +18,7 @@ const User = () => {
   }, [dispatch]);
   return user ? (
     <div>
-      <Header />
+      <Header name={user.userName} />
       <div className="main-bank bg-dark">
         <div className="header">
           <h2>
