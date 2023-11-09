@@ -10,7 +10,7 @@ const userReducer = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, registerUser.pending, (state) => {
+      .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.user = null;
         state.error = null;
@@ -20,16 +20,31 @@ const userReducer = createSlice({
         state.user = action.payload;
         state.error = null;
       })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        console.log(action.error.message);
+        if (action.error.message === "Request failed with status code 401") {
+          state.error = "Acess Denied Invalid Credentials";
+        } else {
+          state.error = action.error.message;
+        }
+      })
+      .addCase(registerUser.pending, (state, action) => {
+        state.loading = true;
+        state.user = null;
+        state.error = null;
+      })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
         state.error = null;
       })
-      .addCase(loginUser.rejected, registerUser.rejected, (state, action) => {
+      .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
         console.log(action.error.message);
-        if (action.error.message === "Request failed with status code 401") {
+        if (action.error.message === "Request failed with status code 400") {
           state.error = "Acess Denied Invalid Credentials";
         } else {
           state.error = action.error.message;

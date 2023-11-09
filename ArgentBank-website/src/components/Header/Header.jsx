@@ -1,11 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = (props) => {
   const getToken = localStorage.getItem("token");
-  if (!getToken) {
-  }
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+
+    navigate("/login");
+  };
   return !getToken ? (
     <header>
       <nav>
@@ -35,9 +39,9 @@ const Header = (props) => {
             <FaRegUserCircle className="iconUserCircle" />
             <p>{props.name}</p>
           </div>
-          <Link to="/login" className="link">
-            <div className="button-log">Sign Out</div>
-          </Link>
+          <div className="bt-signout" onClick={handleSignOut}>
+            <p>Sign Out</p>
+          </div>
         </div>
       </nav>
     </header>

@@ -5,7 +5,7 @@
     box-sizing: border-box;
     background-color: white;
     width: 300px;
-    margin: 40vh auto;
+    margin: 32vh auto;
     margin-top: 3rem;
     padding: 2rem;
     .sign-in-icon {
@@ -29,6 +29,15 @@
       label {
         margin-left: 0.25rem;
       }
+    }
+    .alert {
+      height: 40px;
+      background-color: red;
+      color: white;
+      padding: 5px;
+    }
+    .alert-danger {
+      margin: 4px 0 0 0;
     }
     .sign-in-button {
       display: block;

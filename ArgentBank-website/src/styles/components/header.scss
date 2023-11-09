@@ -41,6 +41,16 @@ header {
           padding-bottom: 2px;
         }
       }
+      .bt-signout {
+        font-weight: bold;
+        cursor: pointer;
+        :hover {
+          text-decoration: underline;
+        }
+        :active {
+          color: #42b983;
+        }
+      }
     }
   }
 }
