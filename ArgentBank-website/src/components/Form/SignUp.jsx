@@ -108,7 +108,7 @@ const SignUp = () => {
             />
           </div>
           <div>
-            <Link to="/login" className="link">
+            <Link to="/login" className="sign-route">
               J'ai deja un compte, me connecter
             </Link>
           </div>

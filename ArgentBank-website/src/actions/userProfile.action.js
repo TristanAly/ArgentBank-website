@@ -4,7 +4,7 @@ export const GET_USER = "GET_USER";
 export const getUser = (access_token) => {
   return (dispatch) => {
     return axios
-      .get("http://localhost:3001/api/v1/user/profile", {
+      .post("http://localhost:3001/api/v1/user/profile", {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },

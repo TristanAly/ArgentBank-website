@@ -15,7 +15,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const handleLoginEvent = (e) => {
     e.preventDefault();
-    let userCredentials = {
+    const userCredentials = {
       email,
       password,
     };
@@ -55,7 +55,7 @@ const SignIn = () => {
             />
           </div>
           <div>
-            <Link to="/register" className="link">
+            <Link to="/register" className="sign-route">
               Je n'ai pas de compte, m'inscrire
             </Link>
           </div>

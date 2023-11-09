@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "../actions/postUser.action";
+import {
+  loginUser,
+  registerUser,
+  getUser,
+  updateUser,
+} from "../actions/postUser.action";
 
 const userReducer = createSlice({
   name: "user",
@@ -8,6 +13,11 @@ const userReducer = createSlice({
     user: null,
     error: null,
   },
+  // reducers: {
+  //   getUser: (state, action) => {
+  //     state.userDetails = action.payload;
+  //   },
+  // },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -23,12 +33,7 @@ const userReducer = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
-        console.log(action.error.message);
-        if (action.error.message === "Request failed with status code 401") {
-          state.error = "Acess Denied Invalid Credentials";
-        } else {
-          state.error = action.error.message;
-        }
+        state.error = action.error.message;
       })
       .addCase(registerUser.pending, (state, action) => {
         state.loading = true;
@@ -43,14 +48,38 @@ const userReducer = createSlice({
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
-        console.log(action.error.message);
-        if (action.error.message === "Request failed with status code 400") {
-          state.error = "Acess Denied Invalid Credentials";
-        } else {
-          state.error = action.error.message;
-        }
+        state.error = action.error.message;
+      })
+      .addCase(getUser.pending, (state) => {
+        state.loading = true;
+        state.user = null;
+        state.error = null;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(getUser.rejected, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        state.error = action.error.message;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.loading = false;
+        // Mettez à jour l'utilisateur avec les nouvelles données
+        state.user = { ...state.user, userName: action.payload.userName };
+        state.error = null;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });
-
+// export const { getUser } = userReducer.reducer;
 export default userReducer.reducer;

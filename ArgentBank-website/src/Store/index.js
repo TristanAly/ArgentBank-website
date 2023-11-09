@@ -6,11 +6,8 @@ import { getUser } from "../actions/userProfile.action";
 const store = configureStore({
   reducer: {
     user: useReducer,
-    getuser: getUserReducers,
   },
   // devTools: true,
 });
-// const access_token = localStorage.getItem("token");
-// store.dispatch(getUser(access_token));
 
 export default store;
