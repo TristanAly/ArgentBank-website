@@ -61,17 +61,28 @@ const User = () => {
             <form onSubmit={handleSubmit}>
               <div className="edit-form">
                 <div>
-                  <label>First Name</label>
-                  <input type="text" value={user.firstName} disabled />
-                </div>
-                <div>
-                  <label>Last Name</label>
-                  <input type="text" value={user.lastName} disabled />
-                </div>
-                <div>
-                  <label>Username</label>
+                  <label htmlFor="firstName">First Name</label>
                   <input
                     type="text"
+                    id="firstName"
+                    value={user.firstName}
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    value={user.lastName}
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label htmlFor="userName">Username</label>
+                  <input
+                    type="text"
+                    id="userName"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                   />

@@ -107,9 +107,9 @@ const SignUp = () => {
               onChange={(e) => setUserName(e.target.value)}
             />
           </div>
-          <div>
+          <div className="link-sign">
             <Link to="/login" className="sign-route">
-              J'ai deja un compte, me connecter
+              I already have an account, log in
             </Link>
           </div>
           <button type="submit" className="sign-in-button">

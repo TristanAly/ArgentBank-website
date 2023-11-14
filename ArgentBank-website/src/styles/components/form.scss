@@ -30,18 +30,22 @@
         margin-left: 0.25rem;
       }
     }
-    .sign-route {
-      text-decoration: none;
-      color: rgb(0, 71, 137);
-      margin: 8px;
-      font-size: 8px;
-      text-align: end;
+    .link-sign {
+      display: flex;
+      justify-content: end;
+      .sign-route {
+        text-decoration: underline;
+        color: #146141;
+        margin: 4px;
+        font-size: 15px;
+      }
     }
     .alert {
-      height: 40px;
-      background-color: red;
-      color: white;
-      padding: 5px;
+      background-color: #e3e3e3;
+      color: #8c333a; //#8e1016
+      border: 3px solid #8c333a;
+      padding: 12px;
+      user-select: none;
     }
     .alert-danger {
       margin: 4px 0 0 0;

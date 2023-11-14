@@ -5,7 +5,7 @@ const MoneyBankCard = (props) => {
     <div className="account">
       <div className="account-content-wrapper">
         <p className="account-title">Argent Bank {props.title}</p>
-        <p className="account-amount">${props.money}</p>
+        <h2 className="account-amount">${props.money}</h2>
         <p className="account-amount-description">{props.balance} Balance</p>
       </div>
       <div className="account-content-wrapper cta">
