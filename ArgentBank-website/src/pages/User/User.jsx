@@ -12,7 +12,6 @@ const User = () => {
   const token = localStorage.getItem("token");
 
   const [isEditing, setIsEditing] = useState(false);
-  const [userName, setUserName] = useState(user ? user.userName : "");
 
   useEffect(() => {
     if (token) {
@@ -27,14 +26,14 @@ const User = () => {
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newUserName = e.target.elements.userName.value;
     let userDetails = {
-      userName,
+      userName: newUserName,
     };
     dispatch(updateUser(userDetails))
       .then((result) => {
         if (result.payload) {
           console.log("Mise à jour réussie :", result.payload);
-          setUserName("");
           return dispatch(getUser(token));
         } else {
           console.log("Mise à jour échouée :", result.error); // Ajoutez cette ligne pour voir l'erreur en cas d'échec
@@ -65,7 +64,7 @@ const User = () => {
                   <input
                     type="text"
                     id="firstName"
-                    value={user.firstName}
+                    defaultValue={user.firstName}
                     disabled
                   />
                 </div>
@@ -74,7 +73,7 @@ const User = () => {
                   <input
                     type="text"
                     id="lastName"
-                    value={user.lastName}
+                    defaultValue={user.lastName}
                     disabled
                   />
                 </div>
@@ -83,8 +82,7 @@ const User = () => {
                   <input
                     type="text"
                     id="userName"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    defaultValue={user.userName}
                   />
                 </div>
               </div>
