@@ -5,7 +5,7 @@ const Feature = (props) => {
   return (
     <div className="features">
       <FeatureItem
-        icon={"/img/icon-chat.png"}
+        icon={"/img/icon-chat.webp"}
         alt={"icone de chat"}
         title={"You are our #1 priority"}
         paragraphe={
@@ -13,7 +13,7 @@ const Feature = (props) => {
         }
       />
       <FeatureItem
-        icon={"/img/icon-money.png"}
+        icon={"/img/icon-money.webp"}
         alt={"icone représentant de l'argent"}
         title={"More savings means higher rates"}
         paragraphe={
@@ -21,7 +21,7 @@ const Feature = (props) => {
         }
       />
       <FeatureItem
-        icon={"./img/icon-security.png"}
+        icon={"./img/icon-security.webp"}
         alt={"icone de bouclier"}
         title={"Security you can trust"}
         paragraphe={

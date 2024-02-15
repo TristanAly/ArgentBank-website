@@ -15,7 +15,7 @@ const Header = (props) => {
       <nav>
         <Link to="/">
           <h1>
-            <img src="./img/argentBankLogo.png" alt="Argent Bank Logo" />
+            <img src="./img/argentBankLogo.webp" alt="Argent Bank Logo" />
           </h1>
         </Link>
         <Link to="/login" className="link">
@@ -29,11 +29,9 @@ const Header = (props) => {
   ) : (
     <header>
       <nav>
-        <Link to="/">
-          <h1>
-            <img src="./img/argentBankLogo.png" alt="Argent Bank Logo" />
-          </h1>
-        </Link>
+        <h1>
+          <img src="./img/argentBankLogo.webp" alt="Argent Bank Logo" />
+        </h1>
         <div className="SignOut">
           <div className="userPreference">
             <FaRegUserCircle className="iconUserCircle" />
