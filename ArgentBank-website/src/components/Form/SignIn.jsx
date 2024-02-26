@@ -54,10 +54,10 @@ const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="input-remember">
+          {/* <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
-          </div>
+          </div> */}
           <div className="link-sign">
             <Link to="/register" className="sign-route">
               not account, sign up
