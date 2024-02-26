@@ -101,6 +101,98 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+            /account:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Account Module
+      summary: Obtenir les informations du compte.
+      description: Récupère les détails du compte, y compris le montant total.
+      responses:
+        '200':
+          description: Informations du compte récupérées avec succès.
+          schema:
+            type: object
+            properties:
+              totalAmount:
+                type: number
+                description: Montant total sur le compte.
+  /transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Visualiser les détails transactions (Monthly)
+      description: "Visualiser toutes les transactions pour le mois en cours, groupées par compte."
+      parameters:
+        - name: month
+          in: query
+          description: Mois en cours.
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Liste des transactions groupées par compte.
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Visualiser les détails d'une transaction.
+      description: Récupère les détails d'une transaction spécifique.
+      parameters:
+        - name: transactionId
+          in: path
+          description: ID de la transaction
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Détails de la transaction récupérés avec succès.
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Modifier les informations d'une transaction.
+      description: Modifie les informations d'une transaction spécifique.
+      parameters:
+        - name: transactionId
+          in: path
+          description: ID de la transaction
+          required: true
+          type: string
+      requestBody:
+        description: Nouvelles informations de la transaction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/TransactionUpdate'
+      responses:
+        '200':
+          description: Détails de la transaction mis à jour avec succès.
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -156,3 +248,52 @@ definitions:
     properties:
       userName:
         type: string
+  Transaction:
+    type: object
+    properties:
+      transactionId:
+        type: string
+        description: ID de la transaction.
+      date:
+        type: string
+        format: date-time
+        description: Date de création de la transaction.
+      description:
+        type: string
+        description: Description de la transaction
+      amount:
+        type: number
+        description: Montant de la transaction.
+      balance:
+        type: number
+        description: Balance après la transaction.
+      category:
+        type: array
+        items:
+          $ref: '#/components/schemas/Category'
+        description: Catégorie de la transaction.
+      note:
+        type: string
+        description: Note ajoutée par le client.
+  TransactionUpdate:
+    type: object
+    properties:
+      category:
+        type: array
+        items:
+          $ref: '#/components/schemas/Category'
+        description: Nouvelle catégorie de la transaction.
+      note:
+        type: string
+        description: Nouvelle note ajoutée par le client.
+  Category:
+    type: object
+    properties:
+      categoryId:
+        type: string
+        format: uuid
+        readOnly: true
+        description: ID unique de la catégorie.
+      categoryName:
+        type: string
+        description: Nom de la catégorie.
